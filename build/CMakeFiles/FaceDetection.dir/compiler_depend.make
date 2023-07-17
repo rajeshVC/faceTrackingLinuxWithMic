@@ -821,10 +821,7 @@ CMakeFiles/FaceDetection.dir/src/main.cpp.o: /home/rajeshd/Documents/GitHub/face
   /usr/local/include/opencv4/opencv2/stitching/detail/camera.hpp \
   /usr/local/include/opencv4/opencv2/video.hpp \
   /usr/local/include/opencv4/opencv2/video/tracking.hpp \
-  /usr/local/include/opencv4/opencv2/video/background_segm.hpp \
-  /usr/include/c++/11/thread \
-  /usr/include/c++/11/bits/std_thread.h \
-  /usr/include/c++/11/bits/this_thread_sleep.h
+  /usr/local/include/opencv4/opencv2/video/background_segm.hpp
 
 
 /usr/local/include/opencv4/opencv2/video/background_segm.hpp:
@@ -1029,8 +1026,6 @@ CMakeFiles/FaceDetection.dir/src/main.cpp.o: /home/rajeshd/Documents/GitHub/face
 
 /usr/include/x86_64-linux-gnu/bits/wordsize.h:
 
-/usr/include/c++/11/bits/std_thread.h:
-
 /usr/include/x86_64-linux-gnu/bits/types/struct_tm.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
@@ -1188,8 +1183,6 @@ CMakeFiles/FaceDetection.dir/src/main.cpp.o: /home/rajeshd/Documents/GitHub/face
 /usr/include/x86_64-linux-gnu/bits/sched.h:
 
 /usr/include/c++/11/type_traits:
-
-/usr/include/c++/11/bits/this_thread_sleep.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/stdint.h:
 
@@ -1468,8 +1461,6 @@ CMakeFiles/FaceDetection.dir/src/main.cpp.o: /home/rajeshd/Documents/GitHub/face
 /usr/include/asm-generic/errno-base.h:
 
 /usr/include/x86_64-linux-gnu/bits/posix1_lim.h:
-
-/usr/include/c++/11/thread:
 
 /usr/include/c++/11/bits/basic_string.tcc:
 
