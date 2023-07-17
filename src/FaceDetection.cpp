@@ -62,11 +62,11 @@ FaceDetection::FaceDetection(const std::string &mnn_path,
 
 }
 
-FaceDetection::FaceDetection()
+FaceDetection::FaceDetection(int nthreads)
 {
     // initVideoStream(scale_num);
     num_output_scales = 5;
-	num_thread = 1;
+	num_thread = nthreads;
     outputTensors.resize(num_output_scales*2);
 
 	if (num_output_scales == 5) {
@@ -116,7 +116,7 @@ FaceDetection::FaceDetection()
 
 	MNN::BackendConfig backendConfig;
 	backendConfig.precision = MNN::BackendConfig::Precision_High;
-	backendConfig.power = MNN::BackendConfig::Power_Low;
+	backendConfig.power = MNN::BackendConfig::Power_Normal;
 	config.backendConfig = &backendConfig;
 
 	faceDetection_session = faceDetection_interpreter->createSession(config);
@@ -391,7 +391,6 @@ void FaceDetection::generateBBox(std::vector<FaceInfo> &bbox_collection, MNN::Te
 
 void FaceDetection::nms(std::vector<FaceInfo> &input, std::vector<FaceInfo> &output, int type) {
     std::sort(input.begin(), input.end(), [](const FaceInfo &a, const FaceInfo &b) { return a.score > b.score; });
-	std::cout<<"nms type: "<<type<<std::endl;
 	if (input.empty()) {
 		return;
 	}

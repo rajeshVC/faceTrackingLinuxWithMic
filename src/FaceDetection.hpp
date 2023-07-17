@@ -39,7 +39,7 @@ public:
               int input_width, int input_length, int num_thread_ = 4, float score_threshold_ = 0.7, 
               float iou_threshold_ = 0.3, int topk_ = -1);
 
-	FaceDetection();
+	FaceDetection(int);
 
     ~FaceDetection();
 
