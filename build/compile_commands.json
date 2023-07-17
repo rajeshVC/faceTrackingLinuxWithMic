@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build",
+  "command": "/usr/bin/g++ -I/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include -I/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/FaceDetection.dir/src/main.cpp.o -c /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/main.cpp",
+  "file": "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/main.cpp",
+  "output": "CMakeFiles/FaceDetection.dir/src/main.cpp.o"
+},
+{
+  "directory": "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build",
+  "command": "/usr/bin/g++ -I/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include -I/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src -isystem /usr/local/include/opencv4 -g -std=gnu++11 -o CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o -c /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/FaceDetection.cpp",
+  "file": "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/FaceDetection.cpp",
+  "output": "CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o"
+}
+]

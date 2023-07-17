@@ -1,0 +1,3 @@
+/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build/CMakeFiles/FaceDetection.dir
+/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build/CMakeFiles/edit_cache.dir
+/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build/CMakeFiles/rebuild_cache.dir

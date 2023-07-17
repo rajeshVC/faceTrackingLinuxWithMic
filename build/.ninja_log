@@ -1,0 +1,5 @@
+# ninja log v5
+0	5	0	clean	a31eedcededa8236
+1	3753	1689569927965917328	CMakeFiles/FaceDetection.dir/src/main.cpp.o	d88c3473ed7744b6
+1	4987	1689569929197953552	CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o	f9a87841abf51bd7
+4987	5709	1689569929913974600	FaceDetection	8434e68053a5d610
