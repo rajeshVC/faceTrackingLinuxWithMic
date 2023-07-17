@@ -62,11 +62,11 @@ FaceDetection::FaceDetection(const std::string &mnn_path,
 
 }
 
-FaceDetection::FaceDetection(int scale_num)
+FaceDetection::FaceDetection()
 {
     // initVideoStream(scale_num);
-    num_output_scales = scale_num;
-	num_thread = 4;
+    num_output_scales = 5;
+	num_thread = 1;
     outputTensors.resize(num_output_scales*2);
 
 	if (num_output_scales == 5) {
@@ -150,6 +150,7 @@ int FaceDetection::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list) 
     image_h = raw_image.rows;
     image_w = raw_image.cols;
     cv::Mat image;
+
     cv::resize(raw_image, image, cv::Size(in_w, in_h));
 
     faceDetection_interpreter->resizeTensor(input_tensor, {1, 3, in_h, in_w});
@@ -195,7 +196,7 @@ int FaceDetection::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list) 
     return 0;
 }
 
-int FaceDetection::detect(cv::Mat &img, std::vector<FaceInfo> &face_list, int resize_h, int resize_w, float score_threshold, float nms_threshold, int top_k, std::vector<int> skip_scale_branch_list)
+int FaceDetection::detect(cv::Mat &img, std::vector<FaceInfo> &face_list, int resize_h, int resize_w, float score_threshold, float nms_threshold, int top_k)
 {
 
 	if (img.empty()) {
@@ -390,7 +391,7 @@ void FaceDetection::generateBBox(std::vector<FaceInfo> &bbox_collection, MNN::Te
 
 void FaceDetection::nms(std::vector<FaceInfo> &input, std::vector<FaceInfo> &output, int type) {
     std::sort(input.begin(), input.end(), [](const FaceInfo &a, const FaceInfo &b) { return a.score > b.score; });
-
+	std::cout<<"nms type: "<<type<<std::endl;
 	if (input.empty()) {
 		return;
 	}
@@ -546,7 +547,7 @@ void FaceDetection::initVideoStream()
 
 	MNN::BackendConfig backendConfig;
 	backendConfig.precision = MNN::BackendConfig::Precision_High;
-	backendConfig.power = MNN::BackendConfig::Power_High;
+	backendConfig.power = MNN::BackendConfig::Power_Low;
 	config.backendConfig = &backendConfig;
 
 	faceDetection_session = faceDetection_interpreter->createSession(config);

@@ -56,18 +56,18 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++11"
+					"fragment" : "-std=gnu++11"
 				}
 			],
 			"includes" : 
 			[
 				{
 					"backtrace" : 4,
-					"path" : "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include"
+					"path" : "/home/rajeshd/Documents/GitHub/face-tracking/mnn/include"
 				},
 				{
 					"backtrace" : 4,
-					"path" : "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src"
+					"path" : "/home/rajeshd/Documents/GitHub/face-tracking/src"
 				},
 				{
 					"backtrace" : 3,
@@ -97,20 +97,16 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
-			{
 				"fragment" : "",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "-L/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/lib",
+				"fragment" : "-L/home/rajeshd/Documents/GitHub/face-tracking/mnn/lib",
 				"role" : "libraryPath"
 			},
 			{
-				"fragment" : "-Wl,-rpath,/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/lib:/usr/local/lib",
+				"fragment" : "-Wl,-rpath,/home/rajeshd/Documents/GitHub/face-tracking/mnn/lib:/usr/local/lib",
 				"role" : "libraries"
 			},
 			{

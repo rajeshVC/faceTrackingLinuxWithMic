@@ -51,14 +51,11 @@ int main(int argc, char **argv)
     } else {
     
         Mat frame;
-        // cv::setNumThreads(2);
         chrono::steady_clock::time_point Tbegin, Tend;
 
-        FaceDetection *ultra = new FaceDetection(8);
+        FaceDetection *ultra = new FaceDetection();
 
-        // std::thread thr(&FaceDetection::initVideoStream, std::ref(ultra));
         VideoCapture cap(0);
-        // std::thread t1(&VideoCapture, std::ref(cap), 0);
         // VideoCapture cap("../resources/videos/Walks2.mp4");
         if (!cap.isOpened()) {
             cerr << "ERROR: Unable to open the video" << endl;
@@ -66,7 +63,7 @@ int main(int argc, char **argv)
         }
 
         cout << "Start grabbing, press ESC on Live window to terminate" << endl;
-        
+
 
         while(1){
             cap >> frame;
@@ -74,29 +71,33 @@ int main(int argc, char **argv)
                 cerr << "ERROR: Unable to grab from the camera" << endl;
                 break;
             }
+            int i=0;
+            while(i++ < 2){
+                cap.read(frame);
+            }
 
             //resize the frame
-            // cv::Mat resized;
-            // cv::resize(frame, resized, cv::Size(480, 340));
+            cv::Mat resized;
+            cv::resize(frame, resized, cv::Size(480, 320));
 
             Tbegin = chrono::steady_clock::now();
 
             std::vector<FaceInfo> finalBox;
-            // ultra->detect(resized,finalBox,resized.rows,resized.cols);
+            ultra->detect(resized,finalBox,resized.rows,resized.cols);
 
-            // for(size_t i = 0; i < finalBox.size(); i++) {
-            //     FaceInfo facebox = finalBox[i];
-            //     cv::Rect box=cv::Rect(facebox.x1,facebox.y1,(facebox.x2-facebox.x1),(facebox.y2-facebox.y1));
-            //     // cv::rectangle(resized, box, cv::Scalar(50, 50, 255), 2);
-            // }
+            for(size_t i = 0; i < finalBox.size(); i++) {
+                FaceInfo facebox = finalBox[i];
+                cv::Rect box=cv::Rect(facebox.x1,facebox.y1,(facebox.x2-facebox.x1),(facebox.y2-facebox.y1));
+                cv::rectangle(resized, box, cv::Scalar(50, 50, 255), 2);
+            }
 
             Tend = chrono::steady_clock::now();
             //calculate frame rate
             float f = chrono::duration_cast <chrono::milliseconds> (Tend - Tbegin).count();
-            // putText(resized, std::to_string(finalBox.size()),Point(10,20),FONT_HERSHEY_SIMPLEX,0.6, Scalar(0, 0, 255));
-            std::cout<<"FPS: "<<cap.get(CAP_PROP_FPS)<<std::endl;
+            putText(resized, std::to_string(finalBox.size()),Point(10,20),FONT_HERSHEY_SIMPLEX,0.6, Scalar(0, 0, 255));
+            // std::cout<<"FPS: "<<cap.get(CAP_PROP_FPS)<<std::endl;
             //show output
-            imshow("Face detection", frame);
+            imshow("Face detection", resized);
 
             char esc = waitKey(10);
             if(esc == 27) break;

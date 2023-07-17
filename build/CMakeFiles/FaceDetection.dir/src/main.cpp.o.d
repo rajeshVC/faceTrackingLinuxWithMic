@@ -1,8 +1,8 @@
 CMakeFiles/FaceDetection.dir/src/main.cpp.o: \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/main.cpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp \
  /usr/include/stdc-predef.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/src/FaceDetection.hpp \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/Interpreter.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/Interpreter.hpp \
  /usr/include/c++/11/functional \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/os_defines.h \
@@ -137,23 +137,23 @@ CMakeFiles/FaceDetection.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
  /usr/include/c++/11/bits/charconv.h \
  /usr/include/c++/11/bits/basic_string.tcc \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/ErrorCode.hpp \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/MNNForwardType.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/Tensor.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/ErrorCode.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/MNNForwardType.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/Tensor.hpp \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_uninitialized.h \
  /usr/include/c++/11/bits/stl_vector.h \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/HalideRuntime.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/HalideRuntime.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stdbool.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/MNNDefine.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/MNNDefine.h \
  /usr/include/assert.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/MNNDefine.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/Tensor.hpp \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/ImageProcess.hpp \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/Matrix.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/MNNDefine.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/Tensor.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/ImageProcess.hpp \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/Matrix.h \
  /usr/include/string.h /usr/include/strings.h \
- /usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/mnn/include/Rect.h \
+ /home/rajeshd/Documents/GitHub/face-tracking/mnn/include/Rect.h \
  /usr/include/c++/11/math.h /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \

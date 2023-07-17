@@ -151,8 +151,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection/build",
-		"source" : "/usr/data/projects/July2023/07172023/peopleCountTask/FaceDetection"
+		"build" : "/home/rajeshd/Documents/GitHub/face-tracking/build",
+		"source" : "/home/rajeshd/Documents/GitHub/face-tracking"
 	},
 	"version" : 
 	{
