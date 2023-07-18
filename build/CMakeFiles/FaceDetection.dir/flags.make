@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/rajeshd/Documents/GitHub/face-tracking/mnn/include -I/home/rajeshd/Documents/GitHub/face-tracking/src -isystem /usr/local/include/opencv4
+CXX_INCLUDES = -I/usr/data/projects/July2023/07182023/mnn/include -I/usr/data/projects/July2023/07182023/src -isystem /usr/local/include/opencv4
 
 CXX_FLAGS = -std=gnu++11
 

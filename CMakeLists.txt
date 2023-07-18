@@ -11,5 +11,7 @@ include_directories(
 
 link_directories(mnn/lib)
 
+# add_compile_options(-g3)
+
 add_executable(FaceDetection src/main.cpp src/FaceDetection.cpp)
 target_link_libraries(FaceDetection MNN ${OpenCV_LIBS})

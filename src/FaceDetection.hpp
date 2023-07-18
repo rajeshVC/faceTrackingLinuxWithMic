@@ -35,15 +35,12 @@ typedef struct FaceInfo
 class FaceDetection
 {
 public:
-    FaceDetection(const std::string &mnn_path,
-              int input_width, int input_length, int num_thread_ = 4, float score_threshold_ = 0.7, 
-              float iou_threshold_ = 0.3, int topk_ = -1);
 
 	FaceDetection(int);
 
     ~FaceDetection();
 
-    int detect(cv::Mat &img, std::vector<FaceInfo> &face_list);
+    // int detect(cv::Mat &img, std::vector<FaceInfo> &face_list);
 
 	int detect(cv::Mat& img, std::vector<FaceInfo>& face_list,int resize_h,int resize_w,
 		float score_threshold = 0.7, float nms_threshold = 0.4, int top_k = 10000);

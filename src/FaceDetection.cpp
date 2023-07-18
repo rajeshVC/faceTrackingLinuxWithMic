@@ -6,62 +6,6 @@
 
 using namespace std;
 
-FaceDetection::FaceDetection(const std::string &mnn_path,
-                     int input_width, int input_length, int num_thread_,
-                     float score_threshold_, float iou_threshold_, int topk_) {
-    num_thread = num_thread_;
-    score_threshold = score_threshold_;
-    iou_threshold = iou_threshold_;
-    in_w = input_width;
-    in_h = input_length;
-    w_h_list = {in_w, in_h};
-
-    for (auto size : w_h_list) {
-        std::vector<float> fm_item;
-        for (float stride : strides) {
-            fm_item.push_back(ceil(size / stride));
-        }
-        featuremap_size.push_back(fm_item);
-    }
-
-    for (auto size : w_h_list) {
-        shrinkage_size.push_back(strides);
-    }
-    /* generate prior anchors */
-    for (int index = 0; index < num_featuremap; index++) {
-        float scale_w = in_w / shrinkage_size[0][index];
-        float scale_h = in_h / shrinkage_size[1][index];
-        for (int j = 0; j < featuremap_size[1][index]; j++) {
-            for (int i = 0; i < featuremap_size[0][index]; i++) {
-                float x_center = (i + 0.5) / scale_w;
-                float y_center = (j + 0.5) / scale_h;
-
-                for (float k : min_boxes[index]) {
-                    float w = k / in_w;
-                    float h = k / in_h;
-                    priors.push_back({clip(x_center, 1), clip(y_center, 1), clip(w, 1), clip(h, 1)});
-                }
-            }
-        }
-    }
-    /* generate prior anchors finished */
-
-    num_anchors = priors.size();
-    std::cout<<"num_anchors (priors size()): "<<num_anchors<<std::endl;
-
-    faceDetection_interpreter = std::shared_ptr<MNN::Interpreter>(MNN::Interpreter::createFromFile(mnn_path.c_str()));
-    MNN::ScheduleConfig config;
-    config.numThread = num_thread;
-    MNN::BackendConfig backendConfig;
-    backendConfig.precision = (MNN::BackendConfig::PrecisionMode) 2;
-    config.backendConfig = &backendConfig;
-
-    faceDetection_session = faceDetection_interpreter->createSession(config);
-
-    input_tensor = faceDetection_interpreter->getSessionInput(faceDetection_session, nullptr);
-
-}
-
 FaceDetection::FaceDetection(int nthreads)
 {
     // initVideoStream(scale_num);
@@ -141,65 +85,11 @@ FaceDetection::~FaceDetection() {
     faceDetection_interpreter->releaseSession(faceDetection_session);
 }
 
-int FaceDetection::detect(cv::Mat &raw_image, std::vector<FaceInfo> &face_list) {
-    if (raw_image.empty()) {
-        std::cout << "image is empty ,please check!" << std::endl;
-        return -1;
-    }
-
-    image_h = raw_image.rows;
-    image_w = raw_image.cols;
-    cv::Mat image;
-
-    cv::resize(raw_image, image, cv::Size(in_w, in_h));
-
-    faceDetection_interpreter->resizeTensor(input_tensor, {1, 3, in_h, in_w});
-    faceDetection_interpreter->resizeSession(faceDetection_session);
-    // std::shared_ptr<MNN::CV::ImageProcess> pretreat(
-    //         MNN::CV::ImageProcess::create(MNN::CV::BGR, MNN::CV::BGR, mean_vals, 3,
-    //                                       norm_vals, 3));
-    std::shared_ptr<MNN::CV::ImageProcess> pretreat(
-            MNN::CV::ImageProcess::create(MNN::CV::BGR, MNN::CV::RGB, mean_vals, 3,
-                                          norm_vals, 3));
-    pretreat->convert(image.data, in_w, in_h, image.step[0], input_tensor);
-
-    auto start = chrono::steady_clock::now();
-
-
-    // run network
-    faceDetection_interpreter->runSession(faceDetection_session);
-
-    // get output data
-
-    string scores = "scores";
-    string boxes = "boxes";
-    MNN::Tensor *tensor_scores = faceDetection_interpreter->getSessionOutput(faceDetection_session, scores.c_str());
-    MNN::Tensor *tensor_boxes = faceDetection_interpreter->getSessionOutput(faceDetection_session, boxes.c_str());
-
-    MNN::Tensor tensor_scores_host(tensor_scores, tensor_scores->getDimensionType());
-
-    tensor_scores->copyToHostTensor(&tensor_scores_host);
-
-    MNN::Tensor tensor_boxes_host(tensor_boxes, tensor_boxes->getDimensionType());
-
-    tensor_boxes->copyToHostTensor(&tensor_boxes_host);
-
-    std::vector<FaceInfo> bbox_collection;
-
-
-    auto end = chrono::steady_clock::now();
-    chrono::duration<double> elapsed = end - start;
-    cout << "inference time:" << elapsed.count() << " s" << endl;
-
-    generateBBox(bbox_collection, tensor_scores, tensor_boxes);
-    nms(bbox_collection, face_list);
-    return 0;
-}
-
 int FaceDetection::detect(cv::Mat &img, std::vector<FaceInfo> &face_list, int resize_h, int resize_w, float score_threshold, float nms_threshold, int top_k)
 {
 
-	if (img.empty()) {
+	if (img.empty()) 
+	{
 		std::cout << "image is empty ,please check!" << std::endl;
 		return -1;
 	}
@@ -225,6 +115,7 @@ int FaceDetection::detect(cv::Mat &img, std::vector<FaceInfo> &face_list, int re
 	std::shared_ptr<MNN::CV::ImageProcess> pretreat(MNN::CV::ImageProcess::create(img_config));
 	pretreat->convert(in.data, resize_w, resize_h, in.step[0], input_tensor);
 
+    auto start = chrono::steady_clock::now();
 
 	//forward
 	faceDetection_interpreter->runSession(faceDetection_session);
@@ -250,6 +141,10 @@ int FaceDetection::detect(cv::Mat &img, std::vector<FaceInfo> &face_list, int re
 			location.push_back(tensor_location->host<float>()[j]);
 			//std::cout << location[j] << std::endl;
 		}
+
+		auto end = chrono::steady_clock::now();
+		chrono::duration<double> elapsed = end - start;
+		// cout << "inference time:" << elapsed.count() << " s" << endl;
 
 		generateBBox(bbox_collection, tensor_score, tensor_location, score_threshold,
 			tensor_score->width(), tensor_score->height(), img.cols, img.rows, i);

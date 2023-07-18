@@ -53,10 +53,10 @@ RM = /usr/local/lib/python3.10/dist-packages/cmake/data/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/rajeshd/Documents/GitHub/face-tracking
+CMAKE_SOURCE_DIR = /usr/data/projects/July2023/07182023
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/rajeshd/Documents/GitHub/face-tracking/build
+CMAKE_BINARY_DIR = /usr/data/projects/July2023/07182023/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FaceDetection.dir/depend.make
@@ -70,32 +70,32 @@ include CMakeFiles/FaceDetection.dir/progress.make
 include CMakeFiles/FaceDetection.dir/flags.make
 
 CMakeFiles/FaceDetection.dir/src/main.cpp.o: CMakeFiles/FaceDetection.dir/flags.make
-CMakeFiles/FaceDetection.dir/src/main.cpp.o: /home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp
+CMakeFiles/FaceDetection.dir/src/main.cpp.o: /usr/data/projects/July2023/07182023/src/main.cpp
 CMakeFiles/FaceDetection.dir/src/main.cpp.o: CMakeFiles/FaceDetection.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FaceDetection.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FaceDetection.dir/src/main.cpp.o -MF CMakeFiles/FaceDetection.dir/src/main.cpp.o.d -o CMakeFiles/FaceDetection.dir/src/main.cpp.o -c /home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/usr/data/projects/July2023/07182023/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FaceDetection.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FaceDetection.dir/src/main.cpp.o -MF CMakeFiles/FaceDetection.dir/src/main.cpp.o.d -o CMakeFiles/FaceDetection.dir/src/main.cpp.o -c /usr/data/projects/July2023/07182023/src/main.cpp
 
 CMakeFiles/FaceDetection.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FaceDetection.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp > CMakeFiles/FaceDetection.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/data/projects/July2023/07182023/src/main.cpp > CMakeFiles/FaceDetection.dir/src/main.cpp.i
 
 CMakeFiles/FaceDetection.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FaceDetection.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp -o CMakeFiles/FaceDetection.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/data/projects/July2023/07182023/src/main.cpp -o CMakeFiles/FaceDetection.dir/src/main.cpp.s
 
 CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o: CMakeFiles/FaceDetection.dir/flags.make
-CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o: /home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.cpp
+CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o: /usr/data/projects/July2023/07182023/src/FaceDetection.cpp
 CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o: CMakeFiles/FaceDetection.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o -MF CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o.d -o CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o -c /home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/usr/data/projects/July2023/07182023/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o -MF CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o.d -o CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o -c /usr/data/projects/July2023/07182023/src/FaceDetection.cpp
 
 CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.cpp > CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /usr/data/projects/July2023/07182023/src/FaceDetection.cpp > CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.i
 
 CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.cpp -o CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /usr/data/projects/July2023/07182023/src/FaceDetection.cpp -o CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.s
 
 # Object files for target FaceDetection
 FaceDetection_OBJECTS = \
@@ -161,7 +161,7 @@ FaceDetection: /usr/local/lib/libopencv_photo.so.4.7.0
 FaceDetection: /usr/local/lib/libopencv_imgproc.so.4.7.0
 FaceDetection: /usr/local/lib/libopencv_core.so.4.7.0
 FaceDetection: CMakeFiles/FaceDetection.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FaceDetection"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/usr/data/projects/July2023/07182023/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable FaceDetection"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FaceDetection.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -173,6 +173,6 @@ CMakeFiles/FaceDetection.dir/clean:
 .PHONY : CMakeFiles/FaceDetection.dir/clean
 
 CMakeFiles/FaceDetection.dir/depend:
-	cd /home/rajeshd/Documents/GitHub/face-tracking/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/rajeshd/Documents/GitHub/face-tracking /home/rajeshd/Documents/GitHub/face-tracking /home/rajeshd/Documents/GitHub/face-tracking/build /home/rajeshd/Documents/GitHub/face-tracking/build /home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles/FaceDetection.dir/DependInfo.cmake --color=$(COLOR)
+	cd /usr/data/projects/July2023/07182023/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /usr/data/projects/July2023/07182023 /usr/data/projects/July2023/07182023 /usr/data/projects/July2023/07182023/build /usr/data/projects/July2023/07182023/build /usr/data/projects/July2023/07182023/build/CMakeFiles/FaceDetection.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/FaceDetection.dir/depend
 

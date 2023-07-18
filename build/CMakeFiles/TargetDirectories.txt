@@ -1,3 +1,3 @@
-/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles/FaceDetection.dir
-/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles/edit_cache.dir
-/home/rajeshd/Documents/GitHub/face-tracking/build/CMakeFiles/rebuild_cache.dir
+/usr/data/projects/July2023/07182023/build/CMakeFiles/FaceDetection.dir
+/usr/data/projects/July2023/07182023/build/CMakeFiles/edit_cache.dir
+/usr/data/projects/July2023/07182023/build/CMakeFiles/rebuild_cache.dir

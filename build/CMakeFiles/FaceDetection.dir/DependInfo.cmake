@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/rajeshd/Documents/GitHub/face-tracking/src/FaceDetection.cpp" "CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o" "gcc" "CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o.d"
-  "/home/rajeshd/Documents/GitHub/face-tracking/src/main.cpp" "CMakeFiles/FaceDetection.dir/src/main.cpp.o" "gcc" "CMakeFiles/FaceDetection.dir/src/main.cpp.o.d"
+  "/usr/data/projects/July2023/07182023/src/FaceDetection.cpp" "CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o" "gcc" "CMakeFiles/FaceDetection.dir/src/FaceDetection.cpp.o.d"
+  "/usr/data/projects/July2023/07182023/src/main.cpp" "CMakeFiles/FaceDetection.dir/src/main.cpp.o" "gcc" "CMakeFiles/FaceDetection.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

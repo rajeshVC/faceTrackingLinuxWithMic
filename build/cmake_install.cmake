@@ -1,4 +1,4 @@
-# Install script for directory: /home/rajeshd/Documents/GitHub/face-tracking
+# Install script for directory: /usr/data/projects/July2023/07182023
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/rajeshd/Documents/GitHub/face-tracking/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/usr/data/projects/July2023/07182023/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
