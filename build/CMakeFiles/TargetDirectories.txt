@@ -1,0 +1,3 @@
+/usr/data/projects/July2023/07202023/build/CMakeFiles/FaceDetection.dir
+/usr/data/projects/July2023/07202023/build/CMakeFiles/edit_cache.dir
+/usr/data/projects/July2023/07202023/build/CMakeFiles/rebuild_cache.dir
