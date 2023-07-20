@@ -7,7 +7,8 @@
 
 #define NTH_FRAME 1
 #define N_THREADS 2
-#define CAMERA_FOV 140
+//!check the FOV
+#define CAMERA_FOV 160
 
 #define STARTX 174
 #define ENDX 623
@@ -129,7 +130,8 @@ int micDoASimulator() {
 // //!for micDoA integration
 FaceInfo identifyTheSpeaker(const cv::Mat& image, const std::vector<FaceInfo>& faceList) {
     int angle = micDoASimulator();
-    float nthPixelPerDegree = image.rows / 160.0;
+    
+    float nthPixelPerDegree = image.rows / CAMERA_FOV;
 
     if(angle < FOV.min) {
         angle = FOV.min;
@@ -144,7 +146,7 @@ FaceInfo identifyTheSpeaker(const cv::Mat& image, const std::vector<FaceInfo>& f
 
     FaceInfo currentSpeaker = {};
     for(auto i=0; i<faceList.size(); i++) {
-        if(currentPixel < (faceList[i].x1 + faceList[i+1].x1)/2) {
+        if(currentPixel < (faceList[i].x2 + (faceList[i+1].x1 - faceList[i].x2)/2)) {
             currentSpeaker = faceList[i];
             break;
         }
@@ -209,7 +211,7 @@ void drawBiggerBoundingBox(const std::vector<FaceInfo>& in, const cv::Mat& resiz
     cv::rectangle(resized, bbox, cv::Scalar(0, 0, 0), 2);
 
     if(in.size() == 1 && type) {
-        cv::putText(resized, "Speaker", cv::Point(new_x1, new_y1), cv::FONT_HERSHEY_SIMPLEX, 0.5, cv::Scalar(0,255,255), 1);
+        cv::putText(resized, "Speaker", cv::Point(new_x1, new_y1), cv::FONT_HERSHEY_SIMPLEX, 0.3, cv::Scalar(0,255,255), 1);
     }
     
 }
