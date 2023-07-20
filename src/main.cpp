@@ -176,10 +176,10 @@ void resetToAspectRatio(float& width, float& height) {
     
 }
 
-void drawBiggerBoundingBox(const std::vector<FaceInfo>& in, const cv::Mat& resized, int type=0){
+cv::Rect drawBiggerBoundingBox(const std::vector<FaceInfo>& in, const cv::Mat& resized, int type=0){
     
     if(in.empty()){
-        return;
+        return cv::Rect();
     }
 
     float x1_min = in[0].x1, y1_min = in[0].y1, x2_max = in[0].x2, y2_max = in[0].y2;
@@ -208,11 +208,14 @@ void drawBiggerBoundingBox(const std::vector<FaceInfo>& in, const cv::Mat& resiz
  
    
     cv::Rect bbox = cv::Rect(new_x1, new_y1, bbox_w, bbox_h);
-    cv::rectangle(resized, bbox, cv::Scalar(0, 0, 0), 2);
+    // cv::rectangle(resized, bbox, cv::Scalar(0, 0, 0), 2);
+    
 
     if(in.size() == 1 && type) {
         cv::putText(resized, "Speaker", cv::Point(new_x1, new_y1), cv::FONT_HERSHEY_SIMPLEX, 0.3, cv::Scalar(0,255,255), 1);
     }
+
+    return bbox;
     
 }
 
@@ -227,21 +230,37 @@ int main(int argc, char **argv)
 
     FaceDetection *ultra = new FaceDetection(std::stoi(argv[2]));
 
+    std::cout<<"here about to open secondary cam"<<std::endl;
+
     VideoCapture cap(SECONDARY_CAMERA);
     // VideoCapture cap("../resources/videos/Walks2.mp4");
     if (!cap.isOpened()) {
         cerr << "ERROR: Unable to open the video" << endl;
         return 0;
     }
+    std::cout<<"here about to open primary cam"<<std::endl;
+
+
+    VideoCapture capPrimary(PRIMARY_CAMERA);
+    if(!capPrimary.isOpened()) {
+        std::cout<<"Failed to open the camera"<<std::endl;
+        exit(1);
+    }
 
     std::cout << "Start grabbing, press ESC on Live window to terminate" << endl;
 
     int i = 0;
+    cv::Mat framePrimary;
     
 
     while(1){
         cap >> frame;
         if (frame.empty()) {
+            cerr << "ERROR: Unable to grab from the camera" << endl;
+            break;
+        }
+        capPrimary >> framePrimary;
+        if (framePrimary.empty()) {
             cerr << "ERROR: Unable to grab from the camera" << endl;
             break;
         }
@@ -277,52 +296,63 @@ int main(int argc, char **argv)
             std::cout<<"----------------------------------------"<<std::endl;
             std::cout<<"----------------------------------------"<<std::endl;
         //!map this small image to actual image
-        float ovX1, ovY1, ovX2, ovY2;
+        // float ovX1, ovY1, ovX2, ovY2;
             for(size_t i = 0; i < finalBox.size(); i++) {
                 FaceInfo facebox = finalBox[i];
                 float width  = facebox.x2-facebox.x1;
                 float height = facebox.y2-facebox.y1;
                 
                 BoundingBox bb;
-                
                 bb.x1 = facebox.x1;
                 bb.x2 = facebox.x2;
                 bb.y1 = facebox.y1;
                 bb.y2 = facebox.y2;
-                cv::Rect box=cv::Rect(bb.x1, bb.y1, (bb.x2-bb.x1), (bb.y2-bb.y1));
-                
-                
+                cv::Rect box = cv::Rect(bb.x1 * (1280/kwidth), bb.y1* (720/kheight), (bb.x2-bb.x1)* (1280/kwidth), (bb.y2-bb.y1)* (720/kheight));
+               
 
-                std::cout<<"ovX1: "<<ovX1 <<" --- ovX2: "<<ovX2<<std::endl;
-                std::cout<<"ovY1: "<<ovY1 <<" --- ovY2: "<<ovY2<<std::endl;
+                // std::cout<<"ovX1: "<<ovX1 <<" --- ovX2: "<<ovX2<<std::endl;
+                // std::cout<<"ovY1: "<<ovY1 <<" --- ovY2: "<<ovY2<<std::endl;
 
-                if(argv[3]) {
-                    std::vector<FaceInfo> locatedSpeaker;
-                    locatedSpeaker.push_back(identifyTheSpeaker(resized, finalBox));
+                // if(argv[3]) {
+                //     std::vector<FaceInfo> locatedSpeaker;
+                //     locatedSpeaker.push_back(identifyTheSpeaker(resized, finalBox));
 
-                    drawBiggerBoundingBox(locatedSpeaker, resized, 1);
+                //     drawBiggerBoundingBox(locatedSpeaker, resized, 1);
 
-                } else {
-                    drawBiggerBoundingBox(finalBox, resized);
+                // } else {
+                cv::Rect pbox = drawBiggerBoundingBox(finalBox, resized);
+                if(pbox.empty()){
+                    std::cout<<"Empty bounding box from OV camera"<<std::endl;
+                    exit(1);
+                }
                 // drawBoundingBoxOnPrimaryDevice(resized, bb, finalBox);
 
-                }
+                // }
 
-                cv::rectangle(resized, box, cv::Scalar(50, 50, 255), 2);
+                // cv::rectangle(resized, box, cv::Scalar(50, 50, 255), 2);
 
-                cv::rectangle(resized, cv::Point(0,0), cv::Point(30, 25), cv::Scalar(50, 50, 255), cv::FILLED);
-                putText(resized, std::to_string(finalBox.size()),Point(10,15),FONT_HERSHEY_SIMPLEX,0.6, Scalar(255, 0, 0), 2);
+                // cv::rectangle(resized, cv::Point(0,0), cv::Point(30, 25), cv::Scalar(50, 50, 255), cv::FILLED);
+                // putText(resized, std::to_string(finalBox.size()),Point(10,15),FONT_HERSHEY_SIMPLEX,0.6, Scalar(255, 0, 0), 2);
+
+                // cv::Rect bboxPrimary = cv::Rect(bb.x1, bb.y1, (bb.x2-bb.x1), (bb.y2-bb.y1));
+                cv::rectangle(framePrimary, box, cv::Scalar(255, 255, 255), 2);
+                putText(framePrimary, std::to_string(finalBox.size()),Point(10,15),FONT_HERSHEY_SIMPLEX,0.6, Scalar(255, 0, 0), 2);
 
             }
         }
-
-
+        // std::cout<<"breaking while loop"<<std::endl;
+        // break;
         // double fps = cv::getTickFrequency() / (cv::getTickCount() - start);
 
         //show output
-        String winName = "[SECONDARY CAMERA]";
+        // String winName1 = "[SECONDARY CAMERA]";
+        // namedWindow(winName1, cv::WINDOW_NORMAL);
+        // imshow(winName1, resized);
+        // String winName = "[SECONDARY CAMERA]";
+
+        String winName = "[PRIMARY CAMERA]";
         namedWindow(winName, cv::WINDOW_NORMAL);
-        imshow(winName, resized);
+        imshow(winName, framePrimary);
 
         i++;
 
